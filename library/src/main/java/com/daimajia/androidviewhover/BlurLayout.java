@@ -15,8 +15,10 @@ import android.widget.RelativeLayout;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
-import com.daimajia.androidviewhover.tools.Blur;
 import com.daimajia.androidviewhover.tools.Util;
+
+import com.enrique.stackblur.StackBlurManager;
+
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.AnimatorSet;
 import com.nineoldandroids.animation.ObjectAnimator;
@@ -177,7 +179,10 @@ public class BlurLayout extends RelativeLayout {
     }
 
     private void addBlurImage(){
-        Bitmap bm = Blur.apply(getContext(), Util.getViewBitmap(this), mBlurRadius);
+        StackBlurManager stackBlurManager = new StackBlurManager(Util.getViewBitmap(this));
+        stackBlurManager.process(mBlurRadius);
+        Bitmap bm = stackBlurManager.returnBlurredImage();
+
         ImageView im = new ImageView(getContext());
         im.setImageBitmap(bm);
         mBlurImage = im;

@@ -25,6 +25,7 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile project(':StackBlur')
     compile "com.android.support:support-v4:20.+"
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.daimajia.easing:library:1.0.0@aar'
